@@ -1,0 +1,100 @@
+
+
+
+
+.chart-container {
+  width: 100%;
+  overflow-x: auto;
+}
+
+svg {
+  width: 100%;
+  height: auto;
+}
+
+.bar-label {
+  font-size: 0.75rem;
+  fill: #363636; /* Bulma text color */
+  text-anchor: middle;
+}
+
+.tab-pane {
+  display: none;
+}
+.tab-pane.is-active {
+  display: block;
+}
+
+
+
+
+
+.table-container.is-scrollable-x {
+  overflow-x: auto;
+  max-width: 100%;
+  position: relative;
+}
+
+/* Sticky header rows */
+.sticky-table thead th.sticky-header {
+  position: sticky;
+  top: 0;
+  z-index: 3;
+  background: white;
+}
+
+/* Sticky first column */
+.sticky-table .sticky-col {
+  position: sticky;
+  left: 0;
+  z-index: 2;
+  background: white;
+  white-space: nowrap;
+}
+
+/* Top-left corner cell (header + first column) */
+.sticky-table thead th.sticky-col {
+  z-index: 4;
+}
+
+/* Section separators like "Neural Codecs" */
+.sticky-section {
+  position: sticky;
+  left: 0;
+  z-index: 1;
+}
+
+/* Visual polish */
+.table th,
+.table td {
+  text-align: center;
+}
+
+.table td:first-child,
+.table th:first-child {
+  text-align: left;
+}
+
+/* For CreativeBulma bulma-carousel */
+#roc-carousel .slider,
+#roc-carousel .slider-container {
+  overflow: hidden;
+}
+
+
+
+/* Navigation arrows */
+#roc-carousel .slider-navigation-previous,
+#roc-carousel .slider-navigation-next {
+  color: #363636;          /* arrow color */
+  border-color: #363636;
+  margin: 1em;
+}
+
+/* Pagination dots */
+#roc-carousel .slider-pagination .slider-page {
+  color: #363636;
+  border-color: #363636;
+}
+#roc-carousel .slider-pagination .slider-page.is-active {
+}
