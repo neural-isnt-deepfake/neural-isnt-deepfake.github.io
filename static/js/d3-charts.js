@@ -76,7 +76,7 @@ function drawGroupedBarChart({
     .attr("class", "bar-label")
     .attr("x", d => x1(d.key) + x1.bandwidth() / 2)
     .attr("y", d => y(d.value) - 5)
-    .text(d => `${d.value}%`);
+    .text(d => `${d.value}`);
 
   // Legend (wrapped)
   const legendItemWidth = 160;
@@ -89,8 +89,10 @@ function drawGroupedBarChart({
       `translate(${margin.left}, ${margin.top + height + 40})`
     );
 
+  //remove info about sampling rates, labels are too long
+  const cleanedKeys = keys.map(k => k.replace(/ \(.*Hz\)$/, ""));
   const legendItem = legend.selectAll(".legend-item")
-    .data(keys)
+    .data(cleanedKeys)
     .enter()
     .append("g")
     .attr("transform", (d, i) => {

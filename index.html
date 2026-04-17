@@ -94,7 +94,7 @@
                   <span>arXiv</span>
               </button>
               <span class="link-block">
-                <a href="https://doi.org/10.5281/zenodo.19616835" target="_blank"  rel="noopener noreferrer"
+                <a href="https://doi.org/10.5281/zenodo.19616835"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fa fa-database"></i>
@@ -103,7 +103,7 @@
                   </a>
               </span><br>
               <span class="link-block">
-                <a href="https://www.idmt.fraunhofer.de/en/research-topics/media-forensics.html" target="_blank"  rel="noopener noreferrer"
+                <a href="https://www.idmt.fraunhofer.de/en/research-topics/media-forensics.html"
                    class="external-link button is-normal is-rounded">
                   <span class="icon">
                       <i class="fas fa-globe"></i>
@@ -112,7 +112,7 @@
                 </a>
               </span>
               <span class="link-block">
-                <a href="https://www.nii.ac.jp/en/" target="_blank"  rel="noopener noreferrer"
+                <a href="https://www.nii.ac.jp/en/"
                    class="external-link button is-normal is-rounded">
                   <span class="icon">
                       &nbsp;&nbsp;<i class="fas fa-globe"></i>
@@ -184,7 +184,7 @@
                 <template x-if="model.infoUrl">
                   <a
                     :href="model.infoUrl"
-                    target="_blank"  rel="noopener noreferrer"
+                   
                     class="button is-normal is-dark is-outlined is-rounded is-icon-button"
                     title="Info page"
                   >
@@ -207,7 +207,7 @@
                 <template x-if="model.githubUrl">
                   <a
                     :href="model.githubUrl"
-                    target="_blank"  rel="noopener noreferrer"
+                   
                     class="button is-normal is-dark is-outlined is-rounded is-icon-button"
                     title="GitHub repository"
                   >
@@ -266,7 +266,7 @@
                 <template x-if="model.paperUrl">
                   <a
                     :href="model.paperUrl"
-                    target="_blank"  rel="noopener noreferrer"
+                   
                     class="button is-normal is-dark is-outlined is-rounded is-icon-button"
                     title="Official Publication"
                   >
@@ -289,7 +289,7 @@
                 <template x-if="model.preprintUrl">
                   <a
                     :href="model.preprintUrl"
-                    target="_blank"  rel="noopener noreferrer"
+                   
                     class="button is-normal is-dark is-outlined is-rounded is-icon-button"
                     title="Preprint"
                   >
@@ -312,7 +312,7 @@
                 <template x-if="model.githubUrl">
                   <a
                     :href="model.githubUrl"
-                    target="_blank"  rel="noopener noreferrer"
+                   
                     class="button is-normal is-dark is-outlined is-rounded is-icon-button"
                     title="GitHub repository"
                   >
@@ -406,257 +406,255 @@
   </section>
 
 
- <section class="section">
+<section class="section">
   <div class="container is-max-desktop">
     <h1 class="title">Performance Evaluation</h1>
 
+    <!-- ── Inner tabs ─────────────────────────────────────────────────── -->
     <div class="tabs is-boxed is-centered">
       <ul>
         <li class="is-active" data-tab="charts"><a>Summary Charts</a></li>
-        <li data-tab="detailed-table"><a>Detailed Result Tables</a></li>
         <li data-tab="roc-curves"><a>ROC Curves</a></li>
+        <li data-tab="detailed-table"><a>Detailed Result Tables</a></li>
       </ul>
     </div>
 
     <div id="tab-content">
 
-      <div class="tab-pane is-active" id="charts">
-        <div class="columns is-centered">
-          <div class="column">
-            <div class="content">
-                <p>
-                Summary of the balanced accuracy (BAC) and equal error rate (EER) achieved by the latest self-supervised-learning-based methods on the ASVSpoof 2019 LA eval dataset and neurally-encoded variants thereof.
-                </p><p>
-                The results were obtained by using the off-the-shelf weights provided by the authors of the respective detection models.
-                </p>
+    <!-- ── Summary Charts ─────────────────────────────────────────── -->
+    <div class="tab-pane is-active" id="charts">
+        <div class="content">
+            <p>
+            Summary of the balanced accuracy (BAC) and equal error rate (EER) achieved by the latest self-supervised-learning-based methods on the ASVSpoof 2019 LA eval dataset and neurally-encoded variants thereof.
+            </p><p>
+            The results were obtained by using the off-the-shelf weights provided by the authors of the respective detection models.
+            </p>
+        </div>
+
+        <div class="content box">
+          <div class="chart-carousel">
+
+            <!-- Prev / Next buttons -->
+            <button class="button is-rounded is-outlined is-dark chart-carousel-prev" onclick="chartNav(-1)" title="Previous">
+              <span class="icon"></span>
+            </button>
+            <button class="button is-rounded is-outlined is-dark chart-carousel-next" onclick="chartNav(1)" title="Next">
+              <span class="icon"></span>
+            </button>
+            <!-- Slides -->
+            <div class="chart-carousel-track" id="chart-slides">
+              <div class="chart-carousel-slide">
+                <div class="has-text-centered">
+                  <div class="subtitle mb-2">Balanced Accuracy (%)</div>
+                  <svg id="chart-bac" viewBox="0 0 900 450"></svg>
+                </div>
+              </div>
+              <div class="chart-carousel-slide">
+                <div class="has-text-centered">
+                  <div class="subtitle mb-2">Equal Error Rate (%)</div>
+                  <svg id="chart-eer" viewBox="0 0 900 450"></svg>
+                </div>
+              </div>
             </div>
 
-            <h2 class="subtitle is-size-4">Balanced Accuracy</h2>
-            <div class="box">
-              <svg id="chart-bac" viewBox="0 0 900 450"></svg>
+            <!-- Dot indicators -->
+            <div class="chart-carousel-dots">
+              <button class="chart-carousel-dot is-active"
+                      data-slide="0" onclick="chartGoTo(0)"
+                      title="Balanced Accuracy"></button>
+              <button class="chart-carousel-dot"
+                      data-slide="1" onclick="chartGoTo(1)"
+                      title="Equal Error Rate"></button>
             </div>
 
-            <h2 class="subtitle is-size-4">Equal Error Rate</h2>
-            <div class="box">
-              <svg id="chart-eer" viewBox="0 0 900 450"></svg>
-            </div>
-
-            <div class="content">
-                <p>
-                Detection performance, that are perfect on the original ASVSpoof19 dataset, degrade dramatically in presence of neural encoding of bonafide trials, with the sole exception of the Descript Audio Codec.
-                </p>
-            </div>
           </div>
         </div>
-      </div>
+        
+        <div class="content condition-description">
+              <p id="condition-chart-note">
+                Since the detection performance is not affected by the sampling rate and the spoofed
+                content was not modified, its decrease depends entirely on the occurrence of false
+                alarms on bona fide trials.
+              </p>
+        </div>
+    </div>
 
+      <!-- ── Detailed Result Tables ─────────────────────────────────── -->
       <div class="tab-pane" id="detailed-table">
         <div class="columns is-centered">
           <div class="column">
             <div class="content">
-                <p>
-                Results breakdown in terms of area under the curve (AUC), equal error rate (EER) and balanced accuracy (BAC).
-                </p><p>
-                The sampling frequency at which each neural encoder operates was noted whenever different than 16 kHz.
-                </p>
+              <p>
+                Results breakdown in terms of area under the curve (AUC), equal error rate (EER),
+                and balanced accuracy (BAC).
+              </p>
+              <p>
+                The sampling frequency at which each neural encoder operates was noted whenever
+                different from 16 kHz.
+              </p>
             </div>
 
             <div class="box">
 
-                <div class="table-container is-scrollable-x sticky-table mb-5">
-                  <table class="table is-bordered is-striped is-narrow is-hoverable">
+              <!-- Baselines table -->
+              <div class="table-container is-scrollable-x sticky-table mb-5">
+                <table class="table is-bordered is-striped is-narrow is-hoverable">
+                  <colgroup>
+                    <col style="width: 380px;">
+                    <col span="9" style="width: 90px;">
+                  </colgroup>
+                  <thead>
+                    <tr>
+                      <th rowspan="2" class="sticky-col sticky-header" style="vertical-align:middle;">Baseline</th>
+                      <th colspan="3" class="sticky-header has-text-centered">XLSR-AASIST</th>
+                      <th colspan="3" class="sticky-header has-text-centered">XLSR-SLS</th>
+                      <th colspan="3" class="sticky-header has-text-centered">XLSR-MAMBA</th>
+                    </tr>
+                    <tr>
+                      <th class="sticky-header">AUC</th>
+                      <th class="sticky-header">EER</th>
+                      <th class="sticky-header">BAC</th>
+                      <th class="sticky-header">AUC</th>
+                      <th class="sticky-header">EER</th>
+                      <th class="sticky-header">BAC</th>
+                      <th class="sticky-header">AUC</th>
+                      <th class="sticky-header">EER</th>
+                      <th class="sticky-header">BAC</th>
+                    </tr>
+                  </thead>
+                  <tbody id="baselines-tbody">
+                    <!-- populated by renderTable() -->
+                  </tbody>
+                </table>
+              </div>
 
-                    <colgroup>
-                      <col style="width: 380px;">
-                      <col span="9" style="width: 90px;">
-                    </colgroup>
+              <!-- Encoders table -->
+              <div class="table-container is-scrollable-x sticky-table">
+                <table class="table is-bordered is-striped is-narrow is-hoverable">
+                  <colgroup>
+                    <col style="width: 0px;">        <!-- ← changed from 380px to 0px -->
+                    <col span="9" style="width: 90px;">
+                  </colgroup>
+                  <thead>
+                    <tr>
+                      <th rowspan="2" class="sticky-col sticky-header" style="vertical-align:middle;">Neural Encoders</th>
+                      <th colspan="3" class="sticky-header has-text-centered">XLSR-AASIST</th>
+                      <th colspan="3" class="sticky-header has-text-centered">XLSR-SLS</th>
+                      <th colspan="3" class="sticky-header has-text-centered">XLSR-MAMBA</th>
+                    </tr>
+                    <tr>
+                      <th class="sticky-header">AUC</th>
+                      <th class="sticky-header">EER</th>
+                      <th class="sticky-header">BAC</th>
+                      <th class="sticky-header">AUC</th>
+                      <th class="sticky-header">EER</th>
+                      <th class="sticky-header">BAC</th>
+                      <th class="sticky-header">AUC</th>
+                      <th class="sticky-header">EER</th>
+                      <th class="sticky-header">BAC</th>
+                    </tr>
+                  </thead>
+                  <tbody id="encoders-tbody">
+                    <!-- populated by renderTable() -->
+                  </tbody>
+                </table>
+              </div>
 
-                    <thead>
-                      <tr>
-                        <th rowspan="2" class="sticky-col sticky-header"  style="vertical-align : middle;">Baseline</th>
-                        <th colspan="3" class="sticky-header has-text-centered">XLSR-AASIST</th>
-                        <th colspan="3" class="sticky-header has-text-centered">XLSR-SLS</th>
-                        <th colspan="3" class="sticky-header has-text-centered">XLSR-MAMBA</th>
-                      </tr>
-                      <tr>
-                        <th class="sticky-header">AUC</th>
-                        <th class="sticky-header">EER</th>
-                        <th class="sticky-header">BAC</th>
-                        <th class="sticky-header">AUC</th>
-                        <th class="sticky-header">EER</th>
-                        <th class="sticky-header">BAC</th>
-                        <th class="sticky-header">AUC</th>
-                        <th class="sticky-header">EER</th>
-                        <th class="sticky-header">BAC</th>
-                      </tr>
-                    </thead>
-
-                    <tbody>
-
-                      <!-- TEMPLATE -->
-                      <tr style="display:none">
-                        <td class="sticky-col">TEMPLATE</td>
-                                           <!-- AUC, EER, BAC -->
-                        <!-- XLSR-AASIST--><td>      </td><td>      </td><td>      </td>
-                        <!-- XLSR-SLS-->   <td>      </td><td>      </td><td>      </td>
-                        <!-- XLSR-Mamba--> <td>      </td><td>      </td><td>      </td>
-                      </tr>
-                      <tr>
-                        <td class="sticky-col">ASVspoof19 LA</td>
-                                           <!-- AUC, EER, BAC -->
-                        <!-- XLSR-AASIST--><td>0.9999</td><td>0.0015</td><td>0.9983</td>
-                        <!-- XLSR-SLS-->   <td>0.9999</td><td>0.0023</td><td>0.9977</td>
-                        <!-- XLSR-Mamba--> <td>0.9999</td><td>0.0020</td><td>0.9964</td>
-                      </tr>
-                      <tr>
-                        <td class="sticky-col">ASVspoof19 LA (24 kHz)</td>
-                                           <!-- AUC, EER, BAC -->
-                        <!-- XLSR-AASIST--><td>0.9999</td><td>0.0026</td><td>0.9975</td>
-                        <!-- XLSR-SLS-->   <td>0.9999</td><td>0.0026</td><td>0.9970</td>
-                        <!-- XLSR-Mamba--> <td>0.9999</td><td>0.0020</td><td>0.9969</td>
-                      </tr>
-                      <tr>
-                        <td class="sticky-col">ASVspoof19 LA (44.1 kHz)</td>
-                                           <!-- AUC, EER, BAC -->
-                        <!-- XLSR-AASIST--><td>0.9999</td><td>0.0025</td><td>0.9974</td>
-                        <!-- XLSR-SLS-->   <td>0.9999</td><td>0.0026</td><td>0.9970</td>
-                        <!-- XLSR-Mamba--> <td>0.9999</td><td>0.0020</td><td>0.9970</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-
-<div class="table-container is-scrollable-x sticky-table">
-  <table class="table is-bordered is-striped is-narrow is-hoverable">
-
-    <colgroup>
-      <col style="width: 0px;">
-      <col span="9" style="width: 90px;">
-    </colgroup>
-
-    <thead>
-      <tr>
-        <th rowspan="2" class="sticky-col sticky-header" style="vertical-align : middle;">Neural Encoders</th>
-        <th colspan="3" class="sticky-header has-text-centered">XLSR-AASIST</th>
-        <th colspan="3" class="sticky-header has-text-centered">XLSR-SLS</th>
-        <th colspan="3" class="sticky-header has-text-centered">XLSR-MAMBA</th>
-      </tr>
-      <tr>
-        <th class="sticky-header">AUC</th>
-        <th class="sticky-header">EER</th>
-        <th class="sticky-header">BAC</th>
-        <th class="sticky-header">AUC</th>
-        <th class="sticky-header">EER</th>
-        <th class="sticky-header">BAC</th>
-        <th class="sticky-header">AUC</th>
-        <th class="sticky-header">EER</th>
-        <th class="sticky-header">BAC</th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <tr>
-        <td class="sticky-col">EnCodec (24 kHz)</td>
-                           <!-- AUC, EER, BAC -->
-        <!-- XLSR-AASIST--><td>0.6276</td>	<td>0.3955</td>	<td>0.5043</td>
-        <!-- XLSR-SLS-->   <td>0.8737</td>	<td>0.1992</td>	<td>0.5070</td>
-        <!-- XLSR-Mamba--> <td>0.6973</td>	<td>0.329</td>	<td>0.5079</td>
-      </tr>
-      <tr>
-        <td class="sticky-col">Lyra-V2</td>
-                           <!-- AUC, EER, BAC -->
-        <!-- XLSR-AASIST--><td>0.4695</td>	<td>0.5050</td>	<td>0.5145</td>
-        <!-- XLSR-SLS-->   <td>0.7897</td>	<td>0.2755</td>	<td>0.5153</td>
-        <!-- XLSR-Mamba--> <td>0.4629</td>	<td>0.5101</td>	<td>0.5009</td>
-      </tr>
-      <tr>
-        <td class="sticky-col">Descript Audio Codec (44.1 kHz)</td>
-                           <!-- AUC, EER, BAC -->
-        <!-- XLSR-AASIST--><td>0.9989</td>	<td>0.0151</td>	<td>0.9737</td>
-        <!-- XLSR-SLS-->   <td>0.9984</td>	<td>0.0189</td>	<td>0.9484</td>
-        <!-- XLSR-Mamba--> <td>0.9988</td>	<td>0.0166</td>	<td>0.9802</td>
-      </tr>
-      <tr>
-        <td class="sticky-col">L3AC</td>
-                           <!-- AUC, EER, BAC -->
-        <!-- XLSR-AASIST--><td>0.8823</td>	<td>0.1948</td>	<td>0.5584</td>
-        <!-- XLSR-SLS-->   <td>0.9158</td>	<td>0.1589</td>	<td>0.5301</td>
-        <!-- XLSR-Mamba--> <td>0.8792</td>	<td>0.1859</td>	<td>0.5863</td>
-      </tr>
-      <tr>
-        <td class="sticky-col">SpeechTokenizer</td>
-                           <!-- AUC, EER, BAC -->
-        <!-- XLSR-AASIST--><td>0.9803</td>	<td>0.0677</td>	<td>0.7537</td>
-        <!-- XLSR-SLS-->   <td>0.9721</td>	<td>0.0838</td>	<td>0.6675</td>
-        <!-- XLSR-Mamba--> <td>0.9719</td>	<td>0.0877</td>	<td>0.7737</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+            </div>
+            <div class="content condition-description">
+              <p id="condition-table-note">
+                Since the detection performance is not affected by the sampling rate and the spoofed
+                content was not modified, its decrease depends entirely on the occurrence of false
+                alarms on bona fide trials.
+              </p>
+            </div>
 
           </div>
-            <div class="content">
-                <p>
-                Since the detection performance are not affected by the sampling rate and the spoofed content was not modified, 
-                their decrease depends entirely on the occurrence of false alarms on bona fide trials.
-                </p>
-            </div>
-         </div>
+        </div>
       </div>
 
-    </div>
-
-
-<div class="tab-pane" id="roc-curves">
+      <!-- ── ROC Curves ─────────────────────────────────────────────── -->
+      <div class="tab-pane" id="roc-curves">
         <div class="columns is-centered">
           <div class="column is-12">
             <div class="content">
-            <p>
-            ROC curves upon ASVSpoof 2019 LA eval dataset and neurally encoded variants.
-            The operating point for output probability of 0.5 (where, by convention, p>0.5 implies that the content is synthetic) is marked by a circle.
-            </p>
+              <p>
+                ROC curves upon ASVSpoof 2019 LA eval dataset and neurally encoded variants.
+                The operating point for output probability of 0.5 (where, by convention,
+                p&gt;0.5 implies that the content is synthetic) is marked by a circle.
+              </p>
             </div>
             <div class="content box">
-        <div id="roc-carousel" class="carousel" data-infinite="true">
+              <div id="roc-carousel" class="carousel" data-infinite="true">
 
-          <div class="item-1">
-            <div class="has-text-centered">
-              <div class="subtitle mb-0">XLSR-AASIST</div>
-              <img src="static/images/xlsr-aasist_combined-roc.png" alt="XLSR-AASIST ROC">
+                <div class="item-1">
+                  <div class="has-text-centered">
+                    <div class="subtitle pt-3 mb-0">XLSR-AASIST</div><div style="overflow: hidden;">
+                    <img data-roc-model="XLSR-AASIST"
+                         src="static/images/xlsr-aasist_combined-roc.png"
+                         alt="XLSR-AASIST ROC">
+                  </div></div>
+                </div>
+
+                <div class="item-2">
+                  <div class="has-text-centered">
+                    <div class="subtitle pt-3 mb-0">XLSR-SLS</div><div style="overflow: hidden;">
+                    <img data-roc-model="XLSR-SLS"
+                         src="static/images/xlsr-sls_combined-roc.png"
+                         alt="XLSR-SLS ROC">
+                  </div></div>
+                </div>
+
+                <div class="item-3">
+                  <div class="has-text-centered">
+                    <div class="subtitle pt-3 mb-0">XLSR-Mamba</div><div style="overflow: hidden;">
+                    <img data-roc-model="XLSR-Mamba"
+                         src="static/images/xlsr-mamba_combined-roc.png"
+                         alt="XLSR-Mamba ROC">
+                  </div></div>
+                </div>
+
+              </div>
+            </div>
+            <div class="content condition-description">
+              <p id="condition-roc-note">
+                <!-- set via javascript-->
+              </p>
             </div>
           </div>
-
-          <div class="item-2">
-            <div class="has-text-centered">
-              <div class="subtitle mb-0">XLSR-SLS</div>
-              <img src="static/images/xlsr-sls_combined-roc.png" alt="XLSR-SLS ROC">
-            </div>
-          </div>
-
-          <div class="item-3">
-            <div class="has-text-centered">
-              <div class="subtitle mb-0">XLSR-Mamba</div>
-              <img src="static/images/xlsr-mamba_combined-roc.png" alt="XLSR-Mamba ROC">
-            </div>
-          </div>
-
         </div>
-        </div>
-        <div class="content">
-            <p>
-            The presence of neural encoding is drastically moving the p=0.5 operating point, resulting in insufficient balanced accuracy.
-            </p>
-            </div>
       </div>
+
+    </div><!-- #tab-content -->
+    
+    
+    <!-- Condition selector -->
+    <div class="has-text-centered pt-4 mt-2 mb-2">
+      <span class="has-text-weight-semibold">Experimental Condition</span>
     </div>
+    <div class="buttons has-addons is-centered mb-2">
+      <button class="button is-dark condition-btn"
+              data-condition="bf-encoded"
+              onclick="setCondition('bf-encoded')">
+        Bona Fide Encoded
+      </button>
+      <button class="button is-outlined condition-btn"
+              data-condition="spoof-encoded"
+              onclick="setCondition('spoof-encoded')">
+        Spoof Re-Encoded
+      </button>
+      <button class="button is-outlined condition-btn"
+              data-condition="both-encoded"
+              onclick="setCondition('both-encoded')">
+        Both Encoded
+      </button>
+    </div>
+    <div class="has-text-centered has-text-grey-dark mb-4" id="condition-description">
+      <!-- content re-set via innerHTML !-->
+    </div>
+    
   </div>
-</div>
-
-
-
-</div>
 </section>
-
 
 
 <!-- Bibtex info -->
@@ -683,8 +681,8 @@
     <div class="columns is-centered">
       <div class="column is-8 has-text-centered"><div class="content">
         <p>
-          This website template is borrowed from <a href="https://github.com/nerfies/nerfies.github.io" target="_blank"  rel="noopener noreferrer">here</a>. 
-          Feel free to clone this website's <a href="https://github.com/neural-isnt-deepfake/neural-isnt-deepfake.github.io" target="_blank"  rel="noopener noreferrer">source code</a>.
+          This website template is borrowed from <a href="https://github.com/nerfies/nerfies.github.io">here</a>. 
+          Feel free to clone this website's <a href="https://github.com/neural-isnt-deepfake/neural-isnt-deepfake.github.io">source code</a>.
         </p>
         <p>
           This website is licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>
@@ -705,31 +703,19 @@
 <script src="static/js/d3-charts.js"></script>
 <script src="static/js/alpinejs.min.js"></script>
 
-<script>
-<!-- draw charts with result summary -->
-drawGroupedBarChart({
-  svgId: "#chart-bac",
-  data: balancedAccuracyData,
-  yLabel: "Balanced Accuracy (%)",
-  yDomain: [0, 100]
-});
-
-drawGroupedBarChart({
-  svgId: "#chart-eer",
-  data: eerData,
-  yLabel: "EER (%)",
-  yDomain: [0, 50]   // example range
-});
-</script>
-
 <script src="static/js/bulma-carousel.min.js"></script>
 <!-- enable dynamic elements -->
 <script>
 document.addEventListener('DOMContentLoaded', () => {
+
+  // ── Initialize with default condition ───────────────────────────────────
+  setCondition('bf-encoded');
+
+  // ── Inner tab switching (Summary Charts / Detailed Tables / ROC) ────────
   let rocCarouselInstance = null;
 
   function initRocCarousel() {
-    if (rocCarouselInstance) return;  // only once
+    if (rocCarouselInstance) return;
     const carousels = bulmaCarousel.attach('#roc-carousel', {
       slidesToShow: 1,
       slidesToScroll: 1,
@@ -738,21 +724,17 @@ document.addEventListener('DOMContentLoaded', () => {
     rocCarouselInstance = carousels[0] || null;
   }
 
-  // Tabs with results
-  document.querySelectorAll(".tabs li").forEach(tab => {
-    tab.addEventListener("click", () => {
-      // deactivate all tabs and panes
-      document.querySelectorAll(".tabs li").forEach(t => t.classList.remove("is-active"));
-      document.querySelectorAll(".tab-pane").forEach(p => p.classList.remove("is-active"));
+  document.querySelectorAll('.tabs li').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.tabs li').forEach(t => t.classList.remove('is-active'));
+      document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('is-active'));
 
-      // activate clicked tab and matching pane
-      tab.classList.add("is-active");
-      const paneId = tab.dataset.tab;           // charts / detailed-table / roc-curves
+      tab.classList.add('is-active');
+      const paneId = tab.dataset.tab;
       const pane = document.getElementById(paneId);
-      if (pane) pane.classList.add("is-active");
+      if (pane) pane.classList.add('is-active');
 
-      // if ROC tab, init/refresh carousel
-      if (paneId === "roc-curves") {
+      if (paneId === 'roc-curves') {
         initRocCarousel();
         if (rocCarouselInstance && rocCarouselInstance.refresh) {
           rocCarouselInstance.refresh();
@@ -761,14 +743,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Optional: if ROC tab is active on load (not your current case, but safe)
-  const rocPane = document.querySelector('#roc-curves');
-  if (rocPane && rocPane.classList.contains('is-active')) {
-    initRocCarousel();
-    if (rocCarouselInstance && rocCarouselInstance.refresh) {
-      rocCarouselInstance.refresh();
-    }
-  }
 });
 </script>
 

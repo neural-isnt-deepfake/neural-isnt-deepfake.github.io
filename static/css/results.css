@@ -98,3 +98,119 @@ svg {
 }
 #roc-carousel .slider-pagination .slider-page.is-active {
 }
+
+
+#roc-carousel .slider-item img {
+    margin-top: -1rem;
+    margin-bottom: .5rem;
+}
+
+
+
+
+/* ── Chart Carousel ────────────────────────────────────────────── */
+.chart-carousel {
+  position: relative;
+  overflow: hidden;
+  padding-bottom: 2.5rem;   /* space for dots */
+}
+
+.chart-carousel-track {
+  display: flex;
+  transition: transform 0.35s ease;
+}
+
+.chart-carousel-slide {
+  min-width: 100%;
+  flex-shrink: 0;
+}
+
+/* Dot indicators */
+.chart-carousel-dots {
+  position: absolute;
+  bottom: 0.5rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.chart-carousel-dot {
+  width:  10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #dbdbdb;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.chart-carousel-dot.is-active { background: #363636; }
+.chart-carousel-dot:hover     { background: #7a7a7a; }
+
+#chart-bac,
+#chart-eer {
+  pointer-events: none;
+}
+
+/* Chart carousel navigation arrows */
+.chart-carousel-prev,
+.chart-carousel-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-60%);
+  z-index: 10;
+  width: 2.6rem;
+  height: 2.6rem;
+  padding: 0 !important;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.chart-carousel-prev { left: 1.00rem; }
+.chart-carousel-next { right: 1.00rem; }
+
+.chart-carousel-prev:hover,
+.chart-carousel-next:hover {
+  transform: translateY(-60%) scale(1.2);
+  background-color: white !important;
+}
+
+.chart-carousel-prev:disabled,
+.chart-carousel-next:disabled {
+  opacity: 0.35;
+  cursor: default !important;
+}
+
+.chart-carousel-prev:hover:disabled,
+.chart-carousel-next:hover:disabled {
+  transform: translateY(-60%);   /* no scale when disabled */
+}
+
+.chart-carousel-prev .icon,
+.chart-carousel-next .icon {
+  position: relative;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.chart-carousel-prev .icon::before,
+.chart-carousel-next .icon::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-color: transparent;
+}
+
+.chart-carousel-prev .icon::before {
+  border-width: 7px 8px 7px 0;
+  border-right-color: black;
+}
+.chart-carousel-next .icon::before {
+  border-width: 7px 0 7px 8px;
+  border-left-color: black;
+}
