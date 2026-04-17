@@ -4,7 +4,7 @@ This is the repository that contains source code for the [neural-isnt-deepfake.g
 
 If you find the content of your website useful for your work, please cite:
 ```
-@article{cuccovillo2026iwbf,
+@inproceedings{cuccovillo2026iwbf,
   author = {Cuccovillo, Luca and Wang, Xin and Gerhardt, Milica and Aichroth, Patrick},
   title = {Neural Encoding Detection is Not All You Need for Synthetic Speech Detection},
   booktitle = {IEEE International Workshop on Biometrics and Forensics (IWBF)},
