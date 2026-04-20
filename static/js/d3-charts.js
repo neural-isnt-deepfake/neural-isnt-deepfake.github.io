@@ -90,9 +90,8 @@ function drawGroupedBarChart({
     );
 
   //remove info about sampling rates, labels are too long
-  const cleanedKeys = keys.map(k => k.replace(/ \(.*Hz\)$/, ""));
   const legendItem = legend.selectAll(".legend-item")
-    .data(cleanedKeys)
+    .data(keys)
     .enter()
     .append("g")
     .attr("transform", (d, i) => {
@@ -111,6 +110,6 @@ function drawGroupedBarChart({
     .attr("x", 18)
     .attr("alignment-baseline", "middle")
     .style("font-size", "12px")
-    .text(d => d);
+    .text(d => d.replace(/ \(.*Hz\)$/, ""));
 }
 
